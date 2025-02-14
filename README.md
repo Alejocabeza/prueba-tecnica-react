@@ -1,4 +1,4 @@
-# Buscardor de Peliculas
+# FlickFinder
 
 ## Introduccion
 
