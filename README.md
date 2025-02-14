@@ -14,15 +14,15 @@ Crear una aplicacion web que permita a los usuarios buscar, explorar y visualiza
 
 ### Descripción de la Tarea
 
-- [ x ] Interfaz de Busqueda.
-  - [ x ] Incluir un campo de entrada (input) donde el usuario pueda escribir el nombre o parte del titulo de una pelicula.
-  - [ x ] Añadir un boton o activar la busqueda al presionar enter para enviar la consulta.
+- [x] Interfaz de Busqueda.
+  - [x] Incluir un campo de entrada (input) donde el usuario pueda escribir el nombre o parte del titulo de una pelicula.
+  - [x] Añadir un boton o activar la busqueda al presionar enter para enviar la consulta.
 - [ ] Consumo de la Api:
   - [ ] Al realizar la busqueda, utlizar axios en conjunto con useEffect para consultar la API externa y obtener un listado de peliculas que coincidan con el termino ingresado.
   - [ ] Manejar de forma adecuada los estados de carga, error y exito en la consulta.
-- [ x ] Visualización de Resultado.
-  - [ x ] Mostrar los resultados en una cuadricula o lista, presentando la imagen (poster). titulo, fecha de estreno y una breve description.
-  - [ x ] Implementar un diseño responseivo utilizando la libreria de UI Seleccionada.
+- [x] Visualización de Resultado.
+  - [x] Mostrar los resultados en una cuadricula o lista, presentando la imagen (poster). titulo, fecha de estreno y una breve description.
+  - [x] Implementar un diseño responseivo utilizando la libreria de UI Seleccionada.
 - [ ] Detalle de la Pelicula:
   - [ ] Sinopsis.
   - [ ] Valoracion.
