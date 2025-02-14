@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Buscardor de Peliculas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduccion
 
-Currently, two official plugins are available:
+Crear una aplicacion web que permita a los usuarios buscar, explorar y visualizar detalles de peliculas utilizando una API externa. La aplicacion debe desarrollarse en react con typescript, haciendo uso intensivo de hooks para gestionar el estado y los cliclos de vida e integrando una libreria de componentes (como Material-UI o Boostrap) para lograr una interfaz de usuario moderna y responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Lenguaje y Framework: React + Typescript
+- Hooks: uso obligatorio de useState y useEffect para el manejo del estado y la carga de datos, ademas de otros hooks como useCallback y useMemo para la optmizacion segun convenga.
+- Librerias Externas:
+  - Axios: para realizar llamadas a al API de peliculas.
+  - Libreria UI: Material-UI o Bootstrap o alguna otra para mejorar la presentación y experiencia de usuario.
+- Estructura y Tipado: Definir interfaces o tipos para la informacion de las peliculas
+- Organizar el codigo en componentes reutilizables.
 
-## Expanding the ESLint configuration
+### Descripción de la Tarea
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [ ] Interfaz de Busqueda.
+  - [ ] Incluir un campo de entrada (input) donde el usuario pueda escribir el nombre o parte del titulo de una pelicula.
+  - [ ] Añadir un boton o activar la busqueda al presionar enter para enviar la consulta.
+- [ ] Consumo de la Api:
+  - [ ] Al realizar la busqueda, utlizar axios en conjunto con useEffect para consultar la API externa y obtener un listado de peliculas que coincidan con el termino ingresado.
+  - [ ] Manejar de forma adecuada los estados de carga, error y exito en la consulta.
+- [ ] Visualización de Resultado.
+  - [ ] Mostrar los resultados en una cuadricula o lista, presentando la imagen (poster). titulo, fecha de estreno y una breve description.
+  - [ ] Implementar un diseño responseivo utilizando la libreria de UI Seleccionada.
+- [ ] Detalle de la Pelicula:
+  - [ ] Sinopsis.
+  - [ ] Valoracion.
+  - [ ] elenco.
+  - [ ] otros detalles.
+  - [ ] uso de react router.
+- [ ] Extras Optionales.
+  - [ ] Implementar paginacion o scroll infinito.
+  - [ ] incluir filtros o opciones de ordenamiento (por ejemplo, ordenar por fecha de estreno o valoracion).
 
-- Configure the top-level `parserOptions` property like this:
+## Instalacion
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clonar el repositorio.
+
+```bash
+git clone git@github.com:Alejocabeza/prueba-tecnica-react.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Instalar las dependencias.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+npm run install
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```
+
+3. Ejecutar el proyecto.
+
+```bash
+npm run dev
+
 ```
