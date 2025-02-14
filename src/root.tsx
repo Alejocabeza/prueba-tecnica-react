@@ -10,8 +10,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex justify-center items-center">
-        <main className="flex justify-center items-center max-w-[1200px] m-auto w-screen">
+      <body className="flex justify-center items-start">
+        <main className="flex justify-center items-start max-w-[1200px] m-auto w-screen">
           {children}
         </main>
         <ScrollRestoration />

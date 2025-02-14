@@ -12,6 +12,14 @@ export const CardMovie: FC<MovieCardInterface> = ({ movie }) => {
       <CardHeader className="flex flex-col gap-4">
         <img src={movie.poster_path} alt={movie.title} className="aspect-square" />
         <h1 className="text-2xl font-bold">{movie.title}</h1>
+        <span className="text-sm">
+          <strong>Release Date:</strong>{" "}
+          {new Date(movie.release_date).toLocaleDateString("es-CO", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </span>
       </CardHeader>
       <CardContent className="!mt-2">
         <p className="text-left text-balance truncate whitespace-break-spaces text-sm">
