@@ -15,7 +15,7 @@ export const dataMovies: MovieInterface[] = [
     release_date: "1994-09-23",
     title: "The Shawshank Redemption",
     video: false,
-    vote_average: 8.708,
+    vote_average: 2.5,
     vote_count: 27700,
   },
   {

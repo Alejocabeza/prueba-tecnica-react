@@ -23,9 +23,12 @@ export const SearchMovie: FC<SearchMovieProps> = ({ setSearch }) => {
     }
 
     return (
-        <form className="flex justify-center items-center gap-2" onSubmit={handleSubmit}>
-            <Input placeholder="Search for a movie" className="border border-gray-300 rounded-md !px-2 !py-1 !w-[20rem]" value={input} onChange={(e) => setInput(e.target.value)} />
-            <Button className="bg-primary rounded !py-1 text-primary-foreground !px-2 cursor-pointer" type="submit">Search</Button>
+        <form className="flex justify-center flex-col items-start gap-2" onSubmit={handleSubmit}>
+            <span className='font-bold'>Search for a movie</span>
+            <div className='flex justify-center items-center gap-4'>
+                <Input placeholder="Search for a movie" className="border border-gray-300 rounded-md !px-2 !py-1 !w-[20rem]" value={input} onChange={(e) => setInput(e.target.value)} />
+                <Button className="bg-primary rounded !py-1 text-primary-foreground !px-2 cursor-pointer" type="submit">Search Movie</Button>
+            </div>
         </form>
     )
 }

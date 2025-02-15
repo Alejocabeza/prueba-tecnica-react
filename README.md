@@ -24,14 +24,14 @@ Crear una aplicacion web que permita a los usuarios buscar, explorar y visualiza
   - [x] Mostrar los resultados en una cuadricula o lista, presentando la imagen (poster). titulo, fecha de estreno y una breve description.
   - [x] Implementar un diseño responseivo utilizando la libreria de UI Seleccionada.
 - [ ] Detalle de la Pelicula:
-  - [ ] Sinopsis.
-  - [ ] Valoracion.
+  - [x] Sinopsis.
+  - [x] Valoracion.
   - [ ] elenco.
-  - [ ] otros detalles.
-  - [ ] uso de react router.
-- [ ] Extras Optionales.
+  - [x] otros detalles.
+  - [x] uso de react router.
+- [x] Extras Optionales.
   - [ ] Implementar paginacion o scroll infinito.
-  - [ ] incluir filtros o opciones de ordenamiento (por ejemplo, ordenar por fecha de estreno o valoracion).
+  - [x] incluir filtros o opciones de ordenamiento (por ejemplo, ordenar por fecha de estreno o valoracion).
 
 ## Instalacion
 
