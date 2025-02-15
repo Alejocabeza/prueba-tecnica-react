@@ -1,4 +1,4 @@
-import { MovieInterface } from "@/interfaces/movies";
+import { MovieInterface } from "@/interfaces/response";
 
 export const dataMovies: MovieInterface[] = [
   {

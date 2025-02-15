@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Card, CardContent, CardHeader } from "./ui/card";
-import { MovieInterface } from "@/interfaces/movies";
+import { ResultResponse } from "@/interfaces/response";
 
 interface MovieCardInterface {
-  movie: MovieInterface;
+  movie: ResultResponse;
 }
 
 export const CardMovie: FC<MovieCardInterface> = ({ movie }) => {
@@ -11,7 +11,7 @@ export const CardMovie: FC<MovieCardInterface> = ({ movie }) => {
     <Card className="w-[20rem] min-h-[20rem] overflow-hidden">
       <CardHeader className="flex flex-col gap-4">
         <a href={`/movie/${movie.id}`} className="flex flex-col gap-4">
-          <img src={movie.poster_path} alt={movie.title} className="aspect-square" />
+          <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} alt={movie.title} />
           <div className="!px-4">
             <h2 className="text-2xl font-bold">{movie.title}</h2>
             <span className="text-sm">

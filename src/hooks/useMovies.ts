@@ -1,65 +1,66 @@
-import { dataMovies } from "@/db/movies";
-import { MovieInterface } from "@/interfaces/movies";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
-import { useApiFindAllMovies } from "./useAxios";
+import { useEffect, useMemo, useState } from "react";
+import {
+  useApiFindAllMovies,
+  useApiFindOneMovie,
+  useApiSearchMovie,
+} from "./useAxios";
+import { ResultResponse } from "@/interfaces/response";
 
-export const useFindAllMovies = (
-  initialSearch = ""
-): [
-  MovieInterface[] | undefined,
-  Dispatch<SetStateAction<string>>,
-  Dispatch<SetStateAction<{ [key: string]: string }>>
-] => {
-  const [search, setSearch] = useState<string>(initialSearch);
-  const [filters, setFilters] = useState<{ [key: string]: string }>({});
-  const [movies, setMovies] = useState<MovieInterface[] | undefined>([]);
-  const { data, isLoading, error } = useApiFindAllMovies();
+export const useMoviesWithPagination = (page: number) => {
+  const { data, isLoading, error } = useApiFindAllMovies({ page });
+  const [movies, setMovies] = useState<ResultResponse[] | undefined>([]);
 
-  const searchedMovies = useMemo(
-    () =>
-      search
-        ? dataMovies.filter((movie) =>
-            movie.title.toLowerCase().includes(search.toLowerCase())
-          )
-        : dataMovies,
-    [search]
-  );
-
-  const filteredMovies = useMemo(() => {
-    if (filters) {
-      if (filters.filter_by_date) {
-        return dataMovies.filter((movie) => {
-          const movieDate = new Date(movie.release_date);
-          const filterDate = new Date(filters.filter_by_date);
-          filterDate.setFullYear(filterDate.getFullYear() + 1);
-          return movieDate.getFullYear() === filterDate.getFullYear();
-        });
-      }
-      if (filters.filter_by_rating) {
-        return dataMovies.filter((movie) => {
-          const rating = parseFloat(filters.filter_by_rating);
-          return (
-            movie.vote_average >= rating && movie.vote_average < rating + 1
-          );
-        });
-      }
+  useEffect(() => {
+    if (data?.results) {
+      setMovies((prev) => {
+        const existingIds = new Set(prev?.map((movie) => movie.id));
+        const newMovies = data.results.filter(
+          (movie) => !existingIds.has(movie.id)
+        );
+        return [...(prev || []), ...newMovies];
+      });
     }
-    return dataMovies;
-  }, [filters]);
+  }, [data]);
 
-  useEffect(() => {
-    setMovies(searchedMovies);
-  }, [searchedMovies]);
-
-  useEffect(() => {
-    setMovies(filteredMovies);
-  }, [filteredMovies]);
-
-  useEffect(() => {}, []);
-
-  return [movies, setSearch, setFilters];
+  return {
+    movies,
+    isLoading,
+    error,
+  };
 };
 
-export const useFindOneMovie = (id: string): MovieInterface => {
-  return dataMovies.filter((movie) => movie.id === Number(id))[0];
+export const useSearchMovies = (search: string, page: number) => {
+  const { data, isLoading, error } = useApiSearchMovie({ search, page });
+  const [movies, setMovies] = useState<ResultResponse[] | undefined>([]);
+
+  useEffect(() => {
+    if (data?.results) {
+      setMovies((prev) => {
+        const existingIds = new Set(prev?.map((movie) => movie.id));
+        const newMovies = data.results.filter(
+          (movie) => !existingIds.has(movie.id)
+        );
+        return [...(prev || []), ...newMovies];
+      });
+    }
+  }, [data]);
+
+  return {
+    movies,
+    isLoading,
+    error,
+  };
+};
+
+export const useFindOneMovie = (id: string) => {
+  const [movie, setMovie] = useState<ResultResponse | undefined>(undefined);
+  const { data, isLoading, error } = useApiFindOneMovie(id);
+
+  useEffect(() => {
+    if (data && error === null) {
+      setMovie(data);
+    }
+  }, [data]);
+
+  return { movie, isLoading, error };
 };
