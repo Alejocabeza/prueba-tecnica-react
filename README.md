@@ -1,5 +1,10 @@
 # FlickFinder
 
+## Screenshots
+
+![Screenshot 1](./public/images/FlickFinder.png)
+![Screenshot 2](<./public/images/FlickFinder%20(1).png>)
+
 ## Introduccion
 
 Crear una aplicacion web que permita a los usuarios buscar, explorar y visualizar detalles de peliculas utilizando una API externa. La aplicacion debe desarrollarse en react con typescript, haciendo uso intensivo de hooks para gestionar el estado y los cliclos de vida e integrando una libreria de componentes (como Material-UI o Boostrap) para lograr una interfaz de usuario moderna y responsiva.
